@@ -94,7 +94,9 @@ public class Main {
         userText = sc.nextLine();
         for (int i = 0; i < bejegyzesek.size(); i++) {
             bejegyzesek.get(1).setTartalom(userText);
-            System.out.println(bejegyzesek.get(1));
+        }
+        for (Bejegyzes bejegyzes : bejegyzesek) {
+            System.out.println(bejegyzes);
         }
     }
 }
