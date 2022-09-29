@@ -58,6 +58,5 @@ public class Bejegyzes {
         String formatCreated = letrejott.format(formatter);
         String formatEdited = szerkesztve.format(formatter);
         return String.format("%s - %d - " + formatCreated + "\n Szerkesztve: " + formatEdited + "\n %s", szerzo, likeok, tartalom);
-        //TODO csak akkor írja a dátumot ha a bejegyzés módosítva van
     }
 }
