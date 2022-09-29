@@ -55,11 +55,11 @@ public class Main {
             Bejegyzes userPost = new Bejegyzes(newSzerzo, newTartalom);
             bejegyzesek.add(userPost);
         }*/
-        int postsSum = 0;
+        /*int postsSum = 0;
         for (Bejegyzes bejegyzes : bejegyzesek) {
             System.out.println(bejegyzes);
             postsSum++;
-        }
+        }*/
         //System.out.println(postsSum);
         /*double randomPost; //egy random ami a posztokat sorsorlja
 
@@ -89,14 +89,41 @@ public class Main {
             System.out.println(bejegyzes);
         }*/
 
-        String userText = " ";
+       /* String userText = " ";
         System.out.println("Adjon meg egy szöveget: ");
         userText = sc.nextLine();
         for (int i = 0; i < bejegyzesek.size(); i++) {
-            bejegyzesek.get(1).setTartalom(userText);
+            bejegyzesek.get(1).setTartalom(userText);      ez jó kód
         }
         for (Bejegyzes bejegyzes : bejegyzesek) {
             System.out.println(bejegyzes);
+        }*/
+
+        int mostPopularIndex = 0;
+        boolean moreThan35 = false;
+        int lessThan15Number = 0;
+        for (int i = 0; i < bejegyzesek.size(); i++) {
+            if(bejegyzesek.get(i).getLikeok() > bejegyzesek.get(mostPopularIndex).getLikeok()){
+                mostPopularIndex = i;
+            }
+            else if(bejegyzesek.get(i).getLikeok() > 35){
+                moreThan35 = true;
+            }
+            else if(bejegyzesek.get(i).getLikeok() < 15){
+                lessThan15Number++;
+            }
         }
+        for (int i = 0; i < bejegyzesek.size(); i++) {
+            if(mostPopularIndex == i){
+                System.out.println("A legnépszerűbb bejegyzés: " + bejegyzesek.get(mostPopularIndex));
+            }
+        }
+        if(moreThan35){
+            System.out.println("Van olyan bejegyzés ami több mint 35 likeot kapott.");
+        }
+        else{
+            System.out.println("Nincs olyan bejegyzés ami több mint 35 likeot kapott.");
+        }
+        System.out.printf("Összesen %d bejegyzés kapott kevesebb mint 15 likeot.", lessThan15Number);
     }
 }
