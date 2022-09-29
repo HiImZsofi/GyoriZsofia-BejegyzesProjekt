@@ -51,10 +51,6 @@ public class Bejegyzes {
         return szerkesztve;
     }
 
-    public void setLikeok(int likeok) {
-        this.likeok = likeok;
-    }
-
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
