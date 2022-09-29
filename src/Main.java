@@ -3,9 +3,11 @@ import hu.petrik.bejegyzes.Bejegyzes;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.System.err;
 import static java.lang.System.in;
 
 public class Main {
@@ -55,39 +57,30 @@ public class Main {
             Bejegyzes userPost = new Bejegyzes(newSzerzo, newTartalom);
             bejegyzesek.add(userPost);
         }*/
-        /*int postsSum = 0;
+        int postsSum = 0;
         for (Bejegyzes bejegyzes : bejegyzesek) {
-            System.out.println(bejegyzes);
+            //System.out.println(bejegyzes);
             postsSum++;
-        }*/
+        }
         //System.out.println(postsSum);
-        /*double randomPost; //egy random ami a posztokat sorsorlja
-
-        postsSum = postsSum * 20;
         //System.out.println(postsSum);
-        double randomLikes = Math.floor(Math.random()*postsSum) + 1; // az összes like száma
-
-        double randomEduction = Math.floor(Math.random() * randomLikes) + 1; //egy random ami levon valamennyi likeot a random posztról
-
-        int index = 0;
-        for (int i = 0; i < bejegyzesek.size(); i++) {
-            randomPost = Math.floor(Math.random() * postsSum) + 1;
-            //System.out.println(randomPost);
-            while(randomLikes > 0 || randomPost < bejegyzesek.size()) {
-                //System.out.println("whileban");
-                index++;
-                if(index == randomPost){
-                    System.out.println("megvan az index");
-                    bejegyzesek.get(i).setLikeok(Integer.parseInt(String.valueOf(randomLikes - randomEduction)));
-                    randomLikes = randomLikes - bejegyzesek.get(i).getLikeok(); //a maradék like amit ki kell sorsolni
-                    randomPost = (Math.random() * postsSum) + randomPost; //csak az előző posztnál nagyobb számú indexet sorsoljon
+        int maradek = 0;
+        int likeSzam = postsSum * 20;
+        double randomPost;
+        int randomIndex = 0;
+        for (int i = 0; i < likeSzam; i++) {
+            for (int j = 0; j < bejegyzesek.size(); j++) {
+                randomPost = Math.floor((Math.random()*postsSum) + 1);
+                randomIndex++;
+                if(randomPost == j){
+                    bejegyzesek.get(j).like();
                 }
             }
         }
 
         for (Bejegyzes bejegyzes : bejegyzesek) {
-            System.out.println(bejegyzes);
-        }*/
+           System.out.println(bejegyzes);
+        }
 
        /* String userText = " ";
         System.out.println("Adjon meg egy szöveget: ");
@@ -99,7 +92,7 @@ public class Main {
             System.out.println(bejegyzes);
         }*/
 
-        int mostPopularIndex = 0;
+        /*int mostPopularIndex = 0;
         boolean moreThan35 = false;
         int lessThan15Number = 0;
         for (int i = 0; i < bejegyzesek.size(); i++) {
@@ -125,5 +118,7 @@ public class Main {
             System.out.println("Nincs olyan bejegyzés ami több mint 35 likeot kapott.");
         }
         System.out.printf("Összesen %d bejegyzés kapott kevesebb mint 15 likeot.", lessThan15Number);
+*/
+       // Collections.sort(bejegyzesek, Collections.reverseOrder());
     }
 }
